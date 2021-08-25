@@ -56,22 +56,18 @@ const columns = [
     customRender: ({ record }) => {
       return (
         <a-space size='middle'>
-          <a-tooltip title='编辑'>
-            <a-button
-              type='primary'
-              shape='circle'
-              size='small'
-              onClick={() => router.push(`/categories/${record.id}/edit`)}
-            >
-              <ui-icon name='md-edit-fr' />
-            </a-button>
-          </a-tooltip>
+          <a-button
+            type='primary'
+            shape='circle'
+            size='small'
+            onClick={() => router.push(`/categories/${record.id}/edit`)}
+          >
+            <ui-icon name='md-edit-fr' />
+          </a-button>
           <a-popconfirm title='该操作将无法恢复，确认要删除？' onConfirm={() => onDeleteConfirm(record)}>
-            <a-tooltip title='删除'>
-              <a-button type='primary' danger shape='circle' size='small'>
-                <ui-icon name='md-delete-fr' />
-              </a-button>
-            </a-tooltip>
+            <a-button type='primary' danger shape='circle' size='small'>
+              <ui-icon name='md-delete-fr' />
+            </a-button>
           </a-popconfirm>
         </a-space>
       )
