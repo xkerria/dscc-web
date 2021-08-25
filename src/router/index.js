@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store'
 import users from './users'
 import categories from './categories'
+import services from './services'
 
 export const routes = [
   {
@@ -21,6 +22,7 @@ export const routes = [
         component: () => import('../views/dashboard/Dashboard.vue')
       },
       categories,
+      services,
       users,
       {
         path: 'settings',
