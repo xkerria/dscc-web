@@ -102,6 +102,8 @@ const onValueChange = (item) => {
 
     .value {
       flex: 1;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
