@@ -53,9 +53,8 @@ const admin = computed(() => store.state.auth.admin)
 const collapsed = computed(() => store.state.glob.navCollapsed)
 
 const getRoutes = () => {
-  let arr = [...route.matched].map((i) => ({ path: i.path, label: i.meta.label, name: i.name }))
-  arr = _.uniqBy(arr, (i) => i.label + i.path)
-  return arr
+  const arr = [...route.matched].map((i) => ({ path: i.path, label: i.meta.label, name: i.name }))
+  return _.uniqBy(arr, (i) => i.label + i.path)
 }
 
 onMounted(() => {
