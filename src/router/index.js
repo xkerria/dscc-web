@@ -25,7 +25,7 @@ export const routes = [
       {
         path: 'settings',
         meta: {
-          label: '平台管理',
+          label: '系统设置',
           icon: 'md-tune-r'
         },
         component: () => import('../views/setting/index.vue'),
@@ -34,7 +34,7 @@ export const routes = [
             path: '',
             name: 'setting-list',
             meta: {
-              label: '系统设置',
+              label: '参数设置',
               icon: 'md-setting-fr'
             },
             component: () => import('../views/setting/List.vue')
