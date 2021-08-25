@@ -10,7 +10,7 @@ export default {
       name: 'user-list',
       meta: {
         label: '用户管理',
-        icon: 'md-users-fr'
+        icon: 'md-people-fr'
       },
       component: () => import('@/views/user/List.vue')
     },
