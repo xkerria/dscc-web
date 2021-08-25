@@ -32,6 +32,12 @@
             <a-typography-text>{{ numeral(max.value).format('0.00 b') }}</a-typography-text>
           </div>
         </div>
+        <div class="item">
+          <div class="label">{{ pageSize.name }}</div>
+          <div class="value">
+            <a-typography-text v-model:content="pageSize.value" :editable="{ onEnd: () => onValueChange(pageSize) }" />
+          </div>
+        </div>
       </a-tab-pane>
       <a-tab-pane key="service" tab="服务设置" force-render>
         <div class="item">
@@ -72,6 +78,7 @@ const logo = computed(() => store.getters['glob/setting']('LOGO', true))
 const platform = computed(() => store.getters['glob/setting']('平台名称', true))
 const bg = computed(() => store.getters['glob/setting']('登录背景', true))
 const max = computed(() => store.getters['glob/setting']('上传最大限制', true))
+const pageSize = computed(() => store.getters['glob/setting']('表格默认行数', true))
 const person = computed(() => store.getters['glob/setting']('客服人员', true))
 const phone = computed(() => store.getters['glob/setting']('客服电话', true))
 const qr = computed(() => store.getters['glob/setting']('客服二维码', true))

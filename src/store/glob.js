@@ -1,4 +1,4 @@
-import lodash from 'lodash'
+import _ from 'lodash'
 import settingApi from '@/api/setting'
 
 const state = () => ({
@@ -7,6 +7,11 @@ const state = () => ({
 })
 
 const getters = {
+  pageSize: (state) => {
+    let val = state.settings.find((i) => i.name === '表格默认行数').value
+    val = Number.isSafeInteger(parseInt(val)) ? parseInt(val) : 10
+    return _.clamp(val, 10, 1000)
+  },
   setting:
     (state) =>
     (name, raw = false) => {

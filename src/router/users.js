@@ -15,6 +15,15 @@ export default {
       component: () => import('@/views/user/List.vue')
     },
     {
+      path: 'add',
+      name: 'user-add',
+      meta: {
+        hidden: true,
+        label: '预添加用户'
+      },
+      component: () => import('@/views/user/Add.vue')
+    },
+    {
       path: ':id',
       name: 'user-view',
       props: true,

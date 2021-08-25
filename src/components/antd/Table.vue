@@ -8,6 +8,7 @@
         :pagination="false"
         :loading="{ spinning: loading, tip }"
         :scroll="{ y }"
+        :size="size"
         @change="onTableChange"
       />
     </div>
@@ -16,6 +17,7 @@
         showSizeChanger
         v-model:current="current"
         v-model:pageSize="pageSize"
+        :size="size"
         :total="total"
         :show-total="(total, range) => `当前 ${range[0]} ~ ${range[1]} 共 ${total}`"
         :pageSizeOptions="['10', '20', '50', '100', '1000']"
@@ -39,6 +41,7 @@ import {
   nextTick,
   computed
 } from 'vue'
+import { useStore } from 'vuex'
 
 const emit = defineEmits(['update:current', 'update:pageSize', 'sort'])
 
@@ -66,14 +69,21 @@ const props = defineProps({
   rowKey: {
     type: String,
     default: 'id'
+  },
+  size: {
+    type: String,
+    validator: (val) => ['default', 'small'].includes(val)
   }
 })
 
-const table = ref()
+const store = useStore()
 
+const sizeMap = { default: 55, small: 32 }
+
+const table = ref()
 const loading = ref(false)
 const current = ref(1)
-const pageSize = ref(10)
+const pageSize = ref(store.getters['glob/pageSize'])
 const total = ref(0)
 const data = ref([])
 const y = ref(0)
@@ -104,10 +114,10 @@ const state = reactive({ loading, current, pageSize, total, data, y, params })
 
 onMounted(() => {
   nextTick(() => {
-    state.y = table?.value?.offsetHeight - 55
+    state.y = table?.value?.offsetHeight - sizeMap[props.size]
   })
   window.addEventListener('resize', () => {
-    state.y = table?.value?.offsetHeight - 55
+    state.y = table?.value?.offsetHeight - sizeMap[props.size]
   })
   load()
 })
@@ -161,6 +171,7 @@ defineExpose({
   .bbar {
     text-align: right;
     padding-top: 8px;
+    border-top: 1px solid hsv(0, 0, 94%);
   }
 }
 </style>

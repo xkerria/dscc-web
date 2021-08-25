@@ -8,11 +8,16 @@
         placeholder="关键字（昵称、地区）"
         @search="onSearch"
       />
-      <span></span>
+      <router-link :to="{ name: 'user-add' }">
+        <a-button type="primary">
+          <ui-icon name="md-add-r" />
+          <span>预添加</span>
+        </a-button>
+      </router-link>
     </div>
 
     <div class="table">
-      <antd-table ref="table" row-key="openid" :search="search" :columns="columns" :request="request" />
+      <antd-table ref="table" row-key="id" :search="search" :columns="columns" :request="request" size="small" />
     </div>
   </div>
 </template>
@@ -45,6 +50,12 @@ const columns = [
     )
   },
   {
+    title: '手机号',
+    dataIndex: 'phone',
+    width: 150,
+    sorter: true
+  },
+  {
     title: '昵称',
     dataIndex: 'nickname',
     width: 150,
@@ -57,7 +68,7 @@ const columns = [
     width: 80,
     align: 'center',
     sorter: true,
-    customRender: ({ text }) => <span>{text ? '男' : '女'}</span>
+    customRender: ({ text }) => <span>{{ 0: '未知', 1: '男', 2: '女' }[text]}</span>
   },
   {
     title: '国家',
@@ -79,6 +90,13 @@ const columns = [
     align: 'center',
     sorter: true,
     encoding: 'gbk'
+  },
+  {
+    title: '积分',
+    dataIndex: 'points',
+    width: 100,
+    align: 'center',
+    sorter: true
   },
   {
     dataIndex: 'id',
@@ -116,6 +134,7 @@ const onMoreClick = (user) => {
   height: 100%;
   overflow: hidden;
   padding: 16px;
+  padding-bottom: 8px;
   display: flex;
   flex-direction: column;
 

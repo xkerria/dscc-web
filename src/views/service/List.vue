@@ -15,7 +15,7 @@
     </div>
 
     <div class="table">
-      <antd-table ref="table" :search="search" :columns="columns" :request="request" />
+      <antd-table ref="table" :search="search" :columns="columns" :request="request" size="small" />
     </div>
   </div>
 </template>
@@ -136,6 +136,7 @@ const onSearch = () => {
   height: 100%;
   overflow: hidden;
   padding: 16px;
+  padding-bottom: 8px;
   display: flex;
   flex-direction: column;
 
