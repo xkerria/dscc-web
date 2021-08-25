@@ -1,12 +1,15 @@
 export default {
   path: 'categories',
+  meta: {
+    label: '分类管理'
+  },
   component: () => import('@/views/base.vue'),
   children: [
     {
       path: '',
       name: 'category-list',
       meta: {
-        title: '分类管理',
+        label: '分类管理',
         icon: 'md-category-fr'
       },
       component: () => import('@/views/category/List.vue')
@@ -16,7 +19,7 @@ export default {
       name: 'category-add',
       meta: {
         hidden: true,
-        title: '添加分类'
+        label: '添加分类'
       },
       component: () => import('@/views/category/Add.vue')
     },
@@ -26,7 +29,7 @@ export default {
       props: true,
       meta: {
         hidden: true,
-        title: '编辑分类'
+        label: '编辑分类'
       },
       component: () => import('@/views/category/Edit.vue')
     }

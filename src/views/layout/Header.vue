@@ -8,7 +8,14 @@
         </span>
       </a-tooltip>
       <span class="route">
-        <a-typography-text>{{ $route?.meta?.title }}</a-typography-text>
+        <a-breadcrumb>
+          <template v-for="(route, index) of routes" :key="index">
+            <a-breadcrumb-item v-if="index === routes.length - 1">{{ route.label }}</a-breadcrumb-item>
+            <a-breadcrumb-item v-else>
+              <router-link :to="route.path">{{ route.label }}</router-link>
+            </a-breadcrumb-item>
+          </template>
+        </a-breadcrumb>
       </span>
     </div>
     <div class="right">
@@ -31,16 +38,36 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
+import _ from 'lodash'
 
 const store = useStore()
+const route = useRoute()
 const router = useRouter()
+const routes = ref([])
 
 const admin = computed(() => store.state.auth.admin)
 const collapsed = computed(() => store.state.glob.navCollapsed)
+
+const getRoutes = () => {
+  let arr = [...route.matched].map((i) => ({ path: i.path, label: i.meta.label, name: i.name }))
+  arr = _.uniqBy(arr, (i) => i.label + i.path)
+  return arr
+}
+
+onMounted(() => {
+  routes.value = getRoutes()
+})
+
+watch(
+  () => route.path,
+  () => {
+    routes.value = getRoutes()
+  }
+)
 
 const onLinkClick = (item) => {
   router.replace(item.path)

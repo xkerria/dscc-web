@@ -20,7 +20,7 @@ export default defineComponent(() => {
 
     if (item.name) {
       const slots = {
-        default: () => <span>{item.meta.title}</span>,
+        default: () => <span>{item.meta.label}</span>,
         icon: () => <UiIcon name={item.meta.icon} />
       }
       return <AMenuItem v-slots={slots} key={item.name} onClick={() => onClick(item)} />
@@ -29,7 +29,7 @@ export default defineComponent(() => {
     const children = item.children.filter((i) => !i.meta.hidden)
     if (children.length === 1) {
       const slots = {
-        default: () => <span>{children[0].meta.title}</span>,
+        default: () => <span>{children[0].meta.label}</span>,
         icon: () => <UiIcon name={children[0].meta.icon} />
       }
       return <AMenuItem v-slots={slots} key={children[0].name} onClick={() => onClick(children[0])} />
@@ -37,7 +37,7 @@ export default defineComponent(() => {
 
     if (children.length > 1) {
       const slots = {
-        title: () => <span>{item.meta.title}</span>,
+        title: () => <span>{item.meta.label}</span>,
         icon: () => <UiIcon name={item.meta.icon} />
       }
       return (

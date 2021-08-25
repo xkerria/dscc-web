@@ -55,7 +55,7 @@ provide('course', course)
 
 onMounted(() => {
   courseApi.show(props.id).then((res) => {
-    route.meta.title = res.name
+    route.meta.label = res.name
     state.course = res
   })
 })

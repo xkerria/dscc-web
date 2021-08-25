@@ -37,25 +37,17 @@ const category = computed(() => store?.state?.auth?.category)
 
 const columns = [
   {
-    title: '图片',
-    dataIndex: 'image',
-    width: 150,
-    align: 'center',
-    customRender: ({ text }) => <ImageThumb height='32' width='126' src={text} mode='contain' />
-  },
-  {
     title: '名称',
     dataIndex: 'name',
+    width: 150,
     sorter: true,
     encoding: 'gbk'
   },
   {
-    title: '展示在首页',
-    dataIndex: 'on_home',
+    title: '简介',
+    dataIndex: 'intro',
     sorter: true,
-    width: 150,
-    align: 'center',
-    customRender: ({ text }) => (text ? '是' : '')
+    encoding: 'gbk'
   },
   {
     dataIndex: 'id',
