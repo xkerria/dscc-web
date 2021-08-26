@@ -39,11 +39,11 @@ const columns = [
   {
     title: '图标',
     dataIndex: 'icon_url',
-    width: 80,
+    width: 90,
     align: 'center',
     customRender: ({ text }) => (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <ImageThumb height='29' width='64' src={text} mode='contain' />
+        <ImageThumb height='29' width='69' src={text} mode='contain' />
       </div>
     )
   },

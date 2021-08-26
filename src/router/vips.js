@@ -10,7 +10,7 @@ export default {
       name: 'vip-list',
       meta: {
         label: '会员等级',
-        icon: 'md-vip'
+        icon: 'md-medal-r'
       },
       component: () => import('@/views/vip/List.vue')
     },

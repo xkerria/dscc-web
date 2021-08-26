@@ -17,7 +17,7 @@ export default {
     return axios.delete(`/users/${id}`)
   },
 
-  topup(id, num) {
-    return axios.post(`/users/${id}/orders`, { points: num })
+  storeRecord(id, data) {
+    return axios.post(`/users/${id}/records`, data)
   }
 }

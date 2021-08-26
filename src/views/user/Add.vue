@@ -21,7 +21,7 @@ import userApi from '@/api/user'
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({ phone: '', points: 0, remark: '' })
+const model = ref({ phone: '', points: 0, remark: '', vip_id: '' })
 const state = reactive({ model })
 
 const onSubmitClick = () => {
