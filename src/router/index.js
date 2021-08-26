@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store'
-import users from './users'
 import categories from './categories'
 import services from './services'
+import partners from './partners'
+import users from './users'
 import settings from './settings'
 
 export const routes = [
@@ -24,6 +25,7 @@ export const routes = [
       },
       categories,
       services,
+      partners,
       users,
       settings
     ]

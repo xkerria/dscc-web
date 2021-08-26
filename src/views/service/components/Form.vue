@@ -3,6 +3,13 @@
     <a-form-item v-bind="validateInfos.name" label="名称">
       <a-input v-model:value="modelRef.name" placeholder="名称" />
     </a-form-item>
+    <a-form-item v-bind="validateInfos.category_id" label="分类">
+      <a-select v-model:value="modelRef.category_id" placeholder="分类">
+        <a-select-option v-for="(category, index) in categories" :key="index" :value="category.id">
+          {{ category.name }}
+        </a-select-option>
+      </a-select>
+    </a-form-item>
     <a-form-item v-bind="validateInfos.icon_url" label="图标">
       <image-field height="80" width="80" v-model:value="modelRef.icon_url" />
     </a-form-item>
@@ -25,11 +32,12 @@
 </template>
 
 <script setup>
-import { reactive, toRaw } from 'vue'
+import { onMounted, reactive, toRaw, ref } from 'vue'
 import { Form } from 'ant-design-vue'
 import ImageField from '@/components/image/Field.vue'
 import VideoField from '@/components/video/Field.vue'
 import RichField from '@/components/rich/Field.vue'
+import categoryApi from '@/api/category'
 
 const useForm = Form.useForm
 
@@ -40,13 +48,14 @@ const props = defineProps({
   }
 })
 
+const categories = ref([])
 const modelRef = reactive({ ...props.model })
-
 const ruleRef = reactive({
   name: [
     { required: true, message: '必填' },
     { min: 1, max: 32, message: '长度为 1 ~ 32 位' }
   ],
+  category_id: [{ required: true, message: '必选' }],
   icon_url: [
     { required: true, message: '必填' },
     { type: 'url', min: 1, max: 1024, message: '地址长度为 1 ~ 1024 位' }
@@ -59,6 +68,12 @@ const ruleRef = reactive({
 })
 
 const { validate, validateInfos } = useForm(modelRef, ruleRef)
+
+onMounted(() => {
+  categoryApi.index().then((res) => {
+    categories.value = res
+  })
+})
 
 defineExpose({
   validate: () => {

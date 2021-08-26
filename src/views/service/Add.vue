@@ -21,7 +21,16 @@ import serviceApi from '@/api/service'
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({ name: '', intro: '', tip: '', content: '', priority: 9999, icon_url: '', video_url: '' })
+const model = ref({
+  name: '',
+  intro: '',
+  tip: '',
+  content: '',
+  priority: 9999,
+  icon_url: '',
+  video_url: '',
+  category_id: ''
+})
 const state = reactive({ model })
 
 const onSubmitClick = () => {

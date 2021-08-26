@@ -1,9 +1,9 @@
 <template>
-  <div class="service-edit" v-if="model.id">
-    <a-page-header class="header" title="编辑服务" :back-icon="false" />
+  <div class="partner-edit" v-if="model.id">
+    <a-page-header class="header" title="编辑合作单位" :back-icon="false" />
 
     <div class="container">
-      <service-form ref="form" :model="state.model" />
+      <partner-form ref="form" :model="state.model" />
 
       <div class="bbar">
         <a-button type="primary" @click="onSubmitClick">提交</a-button>
@@ -17,8 +17,8 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { onMounted } from '@vue/runtime-core'
 import { message } from 'ant-design-vue'
-import ServiceForm from './components/Form.vue'
-import serviceApi from '@/api/service'
+import PartnerForm from './components/Form.vue'
+import partnerApi from '@/api/partner'
 
 const props = defineProps({
   id: {
@@ -29,20 +29,11 @@ const props = defineProps({
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({
-  name: '',
-  intro: '',
-  tip: '',
-  content: '',
-  priority: 9999,
-  icon_url: '',
-  video_url: '',
-  category_id: ''
-})
+const model = ref({ name: '', type: '', contact: '', contact_num: '', intro: '' })
 const state = reactive({ model })
 
 onMounted(() => {
-  serviceApi.show(props.id).then((res) => {
+  partnerApi.show(props.id).then((res) => {
     model.value = res
   })
 })
@@ -51,7 +42,7 @@ const onSubmitClick = () => {
   form.value
     .validate()
     .then((values) => {
-      return serviceApi.update(props.id, values)
+      return partnerApi.update(props.id, values)
     })
     .then(() => {
       message.success('编辑成功')
@@ -61,7 +52,7 @@ const onSubmitClick = () => {
 </script>
 
 <style lang="less" scoped>
-.service-edit {
+.partner-edit {
   padding: 16px;
   background-color: #fff;
   .header {
