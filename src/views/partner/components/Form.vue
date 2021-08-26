@@ -23,9 +23,6 @@
 <script setup>
 import { reactive, toRaw } from 'vue'
 import { Form } from 'ant-design-vue'
-import ImageField from '@/components/image/Field.vue'
-import VideoField from '@/components/video/Field.vue'
-import RichField from '@/components/rich/Field.vue'
 
 const useForm = Form.useForm
 
