@@ -15,7 +15,7 @@
     </div>
 
     <div class="table">
-      <antd-table ref="table" :search="search" :columns="columns" :request="request" />
+      <antd-table ref="table" :search="search" :columns="columns" :request="request" size="small" />
     </div>
   </div>
 </template>
