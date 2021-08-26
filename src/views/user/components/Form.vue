@@ -3,9 +3,6 @@
     <a-form-item v-bind="validateInfos.phone" label="手机号">
       <a-input v-model:value="modelRef.phone" placeholder="手机号" />
     </a-form-item>
-    <a-form-item v-bind="validateInfos.points" label="初始积分">
-      <a-input-number v-model:value="modelRef.points" :min="0" :max="9999" style="width: 320px" />
-    </a-form-item>
     <a-form-item v-bind="validateInfos.vip_id" label="会员等级">
       <a-select v-model:value="modelRef.vip_id" placeholder="会员等级" style="width: 320px">
         <a-select-option v-for="(vip, index) in vips" :key="index" :value="vip.id">
@@ -46,7 +43,6 @@ const ruleRef = reactive({
     { pattern: /^1[3-9][0-9]{9}$/, message: '手机号格式错误' }
   ],
   vip_id: [],
-  priority: [{ type: 'number', min: 0, max: 9999, message: '0 ~ 9999' }],
   remark: [{ min: 0, max: 1000, message: '长度为 0 ~ 1000 位' }]
 })
 
