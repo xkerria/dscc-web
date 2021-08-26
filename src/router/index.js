@@ -4,6 +4,7 @@ import categories from './categories'
 import services from './services'
 import partners from './partners'
 import users from './users'
+import vips from './vips'
 import settings from './settings'
 
 export const routes = [
@@ -27,6 +28,7 @@ export const routes = [
       services,
       partners,
       users,
+      vips,
       settings
     ]
   },

@@ -45,7 +45,7 @@ const ruleRef = reactive({
   type: [{ required: true, message: '必选' }],
   contact: [{ min: 0, max: 255, message: '长度为 0 ~ 255 位' }],
   contact_num: [{ min: 0, max: 255, message: '长度为 0 ~ 255 位' }],
-  intro: [{ min: 0, max: 32, message: '长度为 0 ~ 1024 位' }]
+  intro: [{ min: 0, max: 1024, message: '长度为 0 ~ 1024 位' }]
 })
 
 const { validate, validateInfos } = useForm(modelRef, ruleRef)
