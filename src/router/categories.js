@@ -1,7 +1,7 @@
 export default {
   path: 'categories',
   meta: {
-    label: '分类管理'
+    label: '服务分类'
   },
   component: () => import('@/views/base.vue'),
   children: [
@@ -9,7 +9,7 @@ export default {
       path: '',
       name: 'category-list',
       meta: {
-        label: '分类管理',
+        label: '服务分类',
         icon: 'md-category-fr'
       },
       component: () => import('@/views/category/List.vue')
