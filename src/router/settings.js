@@ -16,6 +16,34 @@ export default {
       component: () => import('@/views/setting/List.vue')
     },
     {
+      path: 'vips',
+      name: 'vip-list',
+      meta: {
+        label: '会员等级',
+        icon: 'md-medal-r'
+      },
+      component: () => import('@/views/vip/List.vue')
+    },
+    {
+      path: 'vips/add',
+      name: 'vip-add',
+      meta: {
+        hidden: true,
+        label: '添加会员等级'
+      },
+      component: () => import('@/views/vip/Add.vue')
+    },
+    {
+      path: 'vips/:id/edit',
+      name: 'vip-edit',
+      props: true,
+      meta: {
+        hidden: true,
+        label: '编辑会员等级'
+      },
+      component: () => import('@/views/vip/Edit.vue')
+    },
+    {
       path: 'admins',
       name: 'admin-list',
       meta: {

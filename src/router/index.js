@@ -3,8 +3,8 @@ import store from '@/store'
 import categories from './categories'
 import services from './services'
 import partners from './partners'
+import coupons from './coupons'
 import users from './users'
-import vips from './vips'
 import settings from './settings'
 
 export const routes = [
@@ -27,8 +27,8 @@ export const routes = [
       categories,
       services,
       partners,
+      coupons,
       users,
-      vips,
       settings
     ]
   },
