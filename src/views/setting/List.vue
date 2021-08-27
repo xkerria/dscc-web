@@ -58,6 +58,17 @@
             <image-field v-model:value="qr.value" @update:value="(val) => onValueChange(qr)" width="160" height="160" />
           </div>
         </div>
+        <div class="item">
+          <div class="label">{{ coupon.name }}</div>
+          <div class="value">
+            <image-field
+              v-model:value="coupon.value"
+              @update:value="(val) => onValueChange(coupon)"
+              width="335"
+              height="90"
+            />
+          </div>
+        </div>
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -79,6 +90,7 @@ const platform = computed(() => store.getters['glob/setting']('平台名称', tr
 const bg = computed(() => store.getters['glob/setting']('登录背景', true))
 const max = computed(() => store.getters['glob/setting']('上传最大限制', true))
 const pageSize = computed(() => store.getters['glob/setting']('表格默认行数', true))
+const coupon = computed(() => store.getters['glob/setting']('优惠券背景', true))
 const person = computed(() => store.getters['glob/setting']('客服人员', true))
 const phone = computed(() => store.getters['glob/setting']('客服电话', true))
 const qr = computed(() => store.getters['glob/setting']('客服二维码', true))
