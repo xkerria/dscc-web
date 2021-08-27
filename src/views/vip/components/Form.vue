@@ -7,7 +7,7 @@
       <image-field height="58" width="138" v-model:value="modelRef.icon_url" mode="contain" />
     </a-form-item>
     <a-form-item v-bind="validateInfos.desc" label="描述">
-      <a-textarea v-model:value="modelRef.desc" placeholder="描述" :rows="4" />
+      <rich-field v-model:value="modelRef.desc" height="580" />
     </a-form-item>
   </a-form>
 </template>
@@ -16,6 +16,7 @@
 import { reactive, toRaw } from 'vue'
 import { Form } from 'ant-design-vue'
 import ImageField from '@/components/image/Field.vue'
+import RichField from '@/components/rich/Field.vue'
 
 const useForm = Form.useForm
 

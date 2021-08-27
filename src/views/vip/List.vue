@@ -50,15 +50,9 @@ const columns = [
   {
     title: '名称',
     dataIndex: 'name',
-    width: 200,
     ellipsis: true,
     sorter: true,
     encoding: 'gbk'
-  },
-  {
-    title: '简介',
-    dataIndex: 'desc',
-    ellipsis: true
   },
   {
     dataIndex: 'id',
