@@ -1,6 +1,6 @@
 <template>
   <div class="vehicle-edit" v-if="model.id">
-    <a-page-header class="header" title="编辑服务" :back-icon="false" />
+    <a-page-header class="header" title="编辑车辆" :back-icon="false" />
 
     <div class="container">
       <vehicle-form ref="form" :model="state.model" />

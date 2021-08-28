@@ -5,6 +5,7 @@ import services from './services'
 import partners from './partners'
 import staffs from './staffs'
 import vehicles from './vehicles'
+import sales from './sales'
 import coupons from './coupons'
 import users from './users'
 import settings from './settings'
@@ -26,13 +27,14 @@ export const routes = [
         },
         component: () => import('../views/dashboard/Dashboard.vue')
       },
+      users,
       categories,
       services,
       partners,
+      coupons,
       staffs,
       vehicles,
-      coupons,
-      users,
+      sales,
       settings
     ]
   },

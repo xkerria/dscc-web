@@ -1,9 +1,9 @@
 <template>
-  <div class="vehicle-add">
-    <a-page-header class="header" title="添加车辆" :back-icon="false" />
+  <div class="sale-edit" v-if="model.id">
+    <a-page-header class="header" title="编辑待售车辆" :back-icon="false" />
 
     <div class="container">
-      <vehicle-form ref="form" :model="state.model" />
+      <sale-form ref="form" :model="state.model" />
 
       <div class="bbar">
         <a-button type="primary" @click="onSubmitClick">提交</a-button>
@@ -15,47 +15,52 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { onMounted } from '@vue/runtime-core'
 import { message } from 'ant-design-vue'
-import VehicleForm from './components/Form.vue'
-import vehicleApi from '@/api/vehicle'
+import SaleForm from './components/Form.vue'
+import saleApi from '@/api/sale'
+
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  }
+})
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({
-  name: '',
-  logo_url: '',
-  image_url: '',
-  day_price: 0,
-  km_price: 0,
-  remark: ''
-})
+const model = ref({ title: '', content: '' })
 const state = reactive({ model })
+
+onMounted(() => {
+  saleApi.show(props.id).then((res) => {
+    model.value = res
+  })
+})
 
 const onSubmitClick = () => {
   form.value
     .validate()
     .then((values) => {
-      return vehicleApi.store(values)
+      return saleApi.update(props.id, values)
     })
     .then(() => {
-      message.success('添加成功')
-      router.replace('/vehicles')
+      message.success('编辑成功')
+      router.back()
     })
 }
 </script>
 
 <style lang="less" scoped>
-.vehicle-add {
+.sale-edit {
   padding: 16px;
   background-color: #fff;
-
   .header {
     border-bottom: 1px solid hsv(0, 0, 94%);
   }
 
   .container {
     margin-top: 40px;
-
     .bbar {
       text-align: center;
     }

@@ -1,9 +1,9 @@
 <template>
-  <div class="vehicle-add">
-    <a-page-header class="header" title="添加车辆" :back-icon="false" />
+  <div class="sale-add">
+    <a-page-header class="header" title="添加待售车辆" :back-icon="false" />
 
     <div class="container">
-      <vehicle-form ref="form" :model="state.model" />
+      <sale-form ref="form" :model="state.model" />
 
       <div class="bbar">
         <a-button type="primary" @click="onSubmitClick">提交</a-button>
@@ -16,36 +16,29 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { message } from 'ant-design-vue'
-import VehicleForm from './components/Form.vue'
-import vehicleApi from '@/api/vehicle'
+import SaleForm from './components/Form.vue'
+import saleApi from '@/api/sale'
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({
-  name: '',
-  logo_url: '',
-  image_url: '',
-  day_price: 0,
-  km_price: 0,
-  remark: ''
-})
+const model = ref({ title: '', content: '' })
 const state = reactive({ model })
 
 const onSubmitClick = () => {
   form.value
     .validate()
     .then((values) => {
-      return vehicleApi.store(values)
+      return saleApi.store(values)
     })
     .then(() => {
       message.success('添加成功')
-      router.replace('/vehicles')
+      router.replace('/sales')
     })
 }
 </script>
 
 <style lang="less" scoped>
-.vehicle-add {
+.sale-add {
   padding: 16px;
   background-color: #fff;
 
