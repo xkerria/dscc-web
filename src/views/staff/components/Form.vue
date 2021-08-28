@@ -27,12 +27,10 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, toRaw, ref, computed } from 'vue'
+import { reactive, toRaw, computed } from 'vue'
 import { useStore } from 'vuex'
 import { Form } from 'ant-design-vue'
 import ImageField from '@/components/image/Field.vue'
-import VideoField from '@/components/video/Field.vue'
-import RichField from '@/components/rich/Field.vue'
 
 const useForm = Form.useForm
 
