@@ -10,7 +10,7 @@ export default {
       name: 'service-list',
       meta: {
         label: '服务管理',
-        icon: 'md-support-o'
+        icon: 'md-phone-in-talk-fr'
       },
       component: () => import('@/views/service/List.vue')
     },

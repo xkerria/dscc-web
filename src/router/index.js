@@ -3,6 +3,7 @@ import store from '@/store'
 import categories from './categories'
 import services from './services'
 import partners from './partners'
+import staffs from './staffs'
 import coupons from './coupons'
 import users from './users'
 import settings from './settings'
@@ -27,6 +28,7 @@ export const routes = [
       categories,
       services,
       partners,
+      staffs,
       coupons,
       users,
       settings

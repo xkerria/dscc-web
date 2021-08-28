@@ -69,6 +69,15 @@
             />
           </div>
         </div>
+        <div class="item">
+          <div class="label">{{ staffTypes.name }}</div>
+          <div class="value">
+            <a-typography-text
+              v-model:content="staffTypes.value"
+              :editable="{ onEnd: () => onValueChange(staffTypes) }"
+            />
+          </div>
+        </div>
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -94,6 +103,7 @@ const coupon = computed(() => store.getters['glob/setting']('优惠券背景', t
 const person = computed(() => store.getters['glob/setting']('客服人员', true))
 const phone = computed(() => store.getters['glob/setting']('客服电话', true))
 const qr = computed(() => store.getters['glob/setting']('客服二维码', true))
+const staffTypes = computed(() => store.getters['glob/setting']('职员类型', true))
 
 const onValueChange = (item) => {
   settingApi.update(item.name, item).then(() => {
