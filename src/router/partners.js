@@ -32,6 +32,16 @@ export default {
         label: '编辑合作单位'
       },
       component: () => import('@/views/partner/Edit.vue')
+    },
+    {
+      path: ':id/qrcode',
+      name: 'partner-qrcode',
+      props: true,
+      meta: {
+        hidden: true,
+        label: '优惠券二维码'
+      },
+      component: () => import('@/views/partner/Qrcode.vue')
     }
   ]
 }

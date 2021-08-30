@@ -70,11 +70,20 @@ const columns = [
   },
   {
     dataIndex: 'id',
-    width: 80,
+    width: 120,
     align: 'right',
     customRender: ({ record }) => {
       return (
         <a-space size='middle'>
+          <a-tooltip title='优惠券'>
+            <a-button
+              shape='circle'
+              size='small'
+              onClick={() => router.push({ name: 'partner-qrcode', params: { id: record.id } })}
+            >
+              <ui-icon name='md-qrcode-r' />
+            </a-button>
+          </a-tooltip>
           <a-button
             type='primary'
             shape='circle'
