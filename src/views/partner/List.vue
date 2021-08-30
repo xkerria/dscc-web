@@ -39,7 +39,7 @@ const columns = [
   {
     title: '名称',
     dataIndex: 'name',
-    width: 200,
+    width: 180,
     ellipsis: true,
     sorter: true,
     encoding: 'gbk'
@@ -61,7 +61,7 @@ const columns = [
   {
     title: '联系电话',
     dataIndex: 'contact_num',
-    width: 150
+    width: 120
   },
   {
     title: '简介',
