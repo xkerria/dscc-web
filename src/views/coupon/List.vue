@@ -5,7 +5,7 @@
         v-model:value="search"
         style="width: 400px"
         enter-button
-        placeholder="关键字（名称）"
+        placeholder="关键字（标题）"
         @search="onSearch"
       />
       <a-button type="primary" @click="$router.push({ name: 'coupon-add' })">
@@ -49,7 +49,7 @@ const columns = [
   {
     title: '标题',
     dataIndex: 'title',
-    width: 200,
+    width: 300,
     ellipsis: true,
     sorter: true,
     encoding: 'gbk'
@@ -109,7 +109,7 @@ const search = ref('')
 
 const request = (params) => {
   return couponApi.index({
-    like: `name:${search.value}`,
+    like: `title:${search.value}`,
     ...params
   })
 }
