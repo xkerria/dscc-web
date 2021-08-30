@@ -41,6 +41,12 @@
       </a-tab-pane>
       <a-tab-pane key="service" tab="服务设置" force-render>
         <div class="item">
+          <div class="label">{{ jump.name }}</div>
+          <div class="value">
+            <a-typography-text v-model:content="jump.value" :editable="{ onEnd: () => onValueChange(jump) }" />
+          </div>
+        </div>
+        <div class="item">
           <div class="label">{{ person.name }}</div>
           <div class="value">
             <a-typography-text v-model:content="person.value" :editable="{ onEnd: () => onValueChange(person) }" />
@@ -104,6 +110,7 @@ const person = computed(() => store.getters['glob/setting']('客服人员', true
 const phone = computed(() => store.getters['glob/setting']('客服电话', true))
 const qr = computed(() => store.getters['glob/setting']('客服二维码', true))
 const staffTypes = computed(() => store.getters['glob/setting']('职员类型', true))
+const jump = computed(() => store.getters['glob/setting']('关联小程序ID', true))
 
 const onValueChange = (item) => {
   settingApi.update(item.name, item).then(() => {
