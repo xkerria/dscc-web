@@ -21,7 +21,7 @@ import saleApi from '@/api/sale'
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({ title: '', content: '' })
+const model = ref({ title: '', image_url: '' })
 const state = reactive({ model })
 
 const onSubmitClick = () => {

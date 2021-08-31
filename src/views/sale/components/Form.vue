@@ -3,8 +3,8 @@
     <a-form-item v-bind="validateInfos.title" label="标题">
       <a-input v-model:value="modelRef.title" placeholder="标题" />
     </a-form-item>
-    <a-form-item v-bind="validateInfos.content" label="详情">
-      <rich-field v-model:value="modelRef.content" height="580" />
+    <a-form-item v-bind="validateInfos.image_url" label="图片">
+      <image-field height="375" width="375" v-model:value="modelRef.image_url" mode="contain" />
     </a-form-item>
   </a-form>
 </template>
@@ -12,7 +12,7 @@
 <script setup>
 import { reactive, toRaw } from 'vue'
 import { Form } from 'ant-design-vue'
-import RichField from '@/components/rich/Field.vue'
+import ImageField from '@/components/image/Field.vue'
 
 const useForm = Form.useForm
 
@@ -29,9 +29,9 @@ const ruleRef = reactive({
     { required: true, message: '必填' },
     { max: 255, message: '长度不超过 255 位' }
   ],
-  content: [
+  image_url: [
     { required: true, message: '必填' },
-    { min: 0, max: 65535, message: '长度不超过 65535 位' }
+    { type: 'url', max: 1024, message: '地址长度不超过 1024 位' }
   ]
 })
 
