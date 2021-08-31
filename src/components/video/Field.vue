@@ -79,7 +79,7 @@ const onFileChange = () => {
 
   const cloud = new Cloud()
   cloud
-    .upload(file, ({ percent: p, text: t }) => {
+    .upload(file, '', ({ percent: p, text: t }) => {
       percent.value = p
     })
     .then(({ url, mime }) => {

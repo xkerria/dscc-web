@@ -43,7 +43,7 @@ export default class Cloud {
     return result
   }
 
-  async upload(file, progress = ({ percent, text }) => {}, prefix = '', options = {}) {
+  async upload(file, prefix = '', progress = ({ percent, text }) => {}, options = {}) {
     const data = {
       id: _.uniqueId(),
       name: file.name,
@@ -106,20 +106,15 @@ export default class Cloud {
     }
   }
 
-  async put(file, path, options = {}) {
+  async put(file, path) {
     const client = await this.getClient()
-    return await client.put(`${path}`, file, {
-      meta: { filename: file.name, mime: file.type, size: file.size },
-      ...options
-    })
+    return await client.put(`${path}`, file)
   }
 
   async putChunked(file, key, options = {}) {
+    console.log(file, key, options)
     const client = await this.getClient()
-    return await client.multipartUpload(`${key}`, file, {
-      meta: { filename: file.name, mime: file.type, size: file.size },
-      ...options
-    })
+    return await client.multipartUpload(`${key}`, file, { ...options })
   }
 
   async delete(paths) {
