@@ -25,7 +25,7 @@ const model = ref(null)
 partnerApi.show(props.id).then((res) => {
   model.value = res
 })
-QRCode.toDataURL(`${baseUrl}/partner?partnerId=${props.id}`).then((url) => {
+QRCode.toDataURL(`${baseUrl}/?partnerId=${props.id}`).then((url) => {
   qrcodeUrl.value = url
 })
 </script>
