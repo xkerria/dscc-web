@@ -13,7 +13,7 @@
     <a-form-item v-bind="validateInfos.icon_url" label="图标">
       <image-field height="80" width="80" v-model:value="modelRef.icon_url" />
     </a-form-item>
-    <a-form-item v-bind="validateInfos.video_url" label="视频">
+    <a-form-item v-bind="validateInfos.video_url" label="视频" extra="请上传宽高比为 16:9 的视频">
       <video-field height="180" width="320" v-model:value="modelRef.video_url" />
     </a-form-item>
     <a-form-item v-bind="validateInfos.priority" label="优先级">
