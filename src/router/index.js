@@ -9,6 +9,7 @@ import sales from './sales'
 import coupons from './coupons'
 import users from './users'
 import settings from './settings'
+import reserves from './reserves'
 
 export const routes = [
   {
@@ -27,6 +28,7 @@ export const routes = [
         },
         component: () => import('../views/dashboard/Dashboard.vue')
       },
+      reserves,
       users,
       categories,
       services,

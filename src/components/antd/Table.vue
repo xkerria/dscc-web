@@ -9,6 +9,7 @@
         :loading="{ spinning: loading, tip }"
         :scroll="{ y }"
         :size="size"
+        :expandedRowRender="expandedRowRender"
         @change="onTableChange"
       />
     </div>
@@ -73,6 +74,9 @@ const props = defineProps({
   size: {
     type: String,
     validator: (val) => ['default', 'small'].includes(val)
+  },
+  expandedRowRender: {
+    type: Function
   }
 })
 
