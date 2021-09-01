@@ -112,7 +112,6 @@ export default class Cloud {
   }
 
   async putChunked(file, key, options = {}) {
-    console.log(file, key, options)
     const client = await this.getClient()
     return await client.multipartUpload(`${key}`, file, { ...options })
   }
