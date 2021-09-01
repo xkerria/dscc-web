@@ -79,6 +79,34 @@ export default {
         icon: 'md-summarize-fr'
       },
       component: () => import('@/views/log/List.vue')
+    },
+    {
+      path: 'banners',
+      name: 'banner-list',
+      meta: {
+        label: '广告管理',
+        icon: 'md-images-fr'
+      },
+      component: () => import('@/views/banner/List.vue')
+    },
+    {
+      path: 'banners/add',
+      name: 'banner-add',
+      meta: {
+        label: '添加广告',
+        hidden: true
+      },
+      component: () => import('@/views/banner/Add.vue')
+    },
+    {
+      path: 'banners/:id/edit',
+      name: 'banner-edit',
+      props: true,
+      meta: {
+        label: '编辑广告',
+        hidden: true
+      },
+      component: () => import('@/views/banner/Edit.vue')
     }
   ]
 }
