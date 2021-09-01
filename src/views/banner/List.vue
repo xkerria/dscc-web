@@ -43,7 +43,7 @@ const types = {
 const columns = [
   {
     title: '图片',
-    dataIndex: 'image',
+    dataIndex: 'image_url',
     customRender: ({ text }) => <ImageThumb height='90' width='160' src={text} mode='contain' />
   },
   {
