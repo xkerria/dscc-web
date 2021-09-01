@@ -3,6 +3,9 @@
     <a-form-item v-bind="validateInfos.title" label="标题">
       <a-input v-model:value="modelRef.title" placeholder="标题" />
     </a-form-item>
+    <a-form-item v-bind="validateInfos.priority" label="优先级">
+      <a-input-number v-model:value="modelRef.priority" :min="0" :max="9999" style="width: 320px" />
+    </a-form-item>
     <a-form-item v-bind="validateInfos.cover_url" label="封面图片">
       <image-field height="180" width="320" v-model:value="modelRef.cover_url" mode="cover" />
     </a-form-item>
@@ -39,7 +42,8 @@ const ruleRef = reactive({
   image_url: [
     { required: true, message: '必填' },
     { type: 'url', max: 1024, message: '地址长度不超过 1024 位' }
-  ]
+  ],
+  priority: [{ type: 'number', min: 0, max: 9999, message: '0 ~ 9999' }]
 })
 
 const { validate, validateInfos } = useForm(modelRef, ruleRef)

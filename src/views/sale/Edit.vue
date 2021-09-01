@@ -29,7 +29,7 @@ const props = defineProps({
 
 const router = useRouter()
 const form = ref(null)
-const model = ref({ title: '', cover_url: '', image_url: '' })
+const model = ref({ title: '', cover_url: '', image_url: '', priority: 9999 })
 const state = reactive({ model })
 
 onMounted(() => {

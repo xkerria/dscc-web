@@ -37,11 +37,29 @@ const sale = computed(() => store?.state?.auth?.sale)
 
 const columns = [
   {
+    title: '封面',
+    dataIndex: 'cover_url',
+    width: 180,
+    align: 'center',
+    customRender: ({ text }) => (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <ImageThumb height='90' width='160' src={text} mode='cover' />
+      </div>
+    )
+  },
+  {
     title: '标题',
     dataIndex: 'title',
     ellipsis: true,
     sorter: true,
     encoding: 'gbk'
+  },
+  {
+    title: '优先级',
+    dataIndex: 'priority',
+    width: 100,
+    ellipsis: true,
+    sorter: true
   },
   {
     dataIndex: 'id',
@@ -74,6 +92,7 @@ const search = ref('')
 const request = (params) => {
   return saleApi.index({
     like: `title:${search.value}|content:${search.value}`,
+    order: 'priority',
     ...params
   })
 }
