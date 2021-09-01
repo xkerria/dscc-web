@@ -10,8 +10,8 @@
     <a-form-item v-bind="validateInfos.priority" label="优先级">
       <a-input-number v-model:value="modelRef.priority" :min="0" :max="9999" style="width: 320px" />
     </a-form-item>
-    <a-form-item v-bind="validateInfos.image" label="图片">
-      <image-field height="375" width="375" v-model:value="modelRef.image" mode="contain" />
+    <a-form-item v-bind="validateInfos.image_url" label="图片">
+      <image-field height="375" width="375" v-model:value="modelRef.image_url" mode="contain" />
     </a-form-item>
   </a-form>
 </template>

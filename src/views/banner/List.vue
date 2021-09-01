@@ -51,8 +51,7 @@ const columns = [
     dataIndex: 'type',
     width: 100,
     ellipsis: true,
-    sorter: true,
-    customRender: ({ text }) => types[text]
+    sorter: true
   },
   {
     title: '优先级',
