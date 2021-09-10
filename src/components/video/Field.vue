@@ -9,6 +9,9 @@
       <a-tooltip title="重新上传" color="#1890ff">
         <ui-icon name="md-upload-fr" @click="onTriggerClick" />
       </a-tooltip>
+      <a-tooltip title="删除" color="#1890ff">
+        <ui-icon name="md-clear-fr" @click="onClearClick" />
+      </a-tooltip>
     </video-thumb>
 
     <div v-else @click="onTriggerClick" :style="style" class="trigger">
@@ -95,6 +98,10 @@ const onFileChange = () => {
 const onTriggerClick = (e) => {
   e.preventDefault()
   input.value.click(e)
+}
+
+const onClearClick = (e) => {
+  emit('update:value', '')
 }
 
 const onPreviewClick = () => {
